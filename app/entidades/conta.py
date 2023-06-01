@@ -6,7 +6,7 @@ class Conta():
 
     @property
     def nome(self):
-        self.__nome
+        return self.__nome
 
     @nome.setter
     def nome(self, nome):
@@ -14,7 +14,7 @@ class Conta():
 
     @property
     def resumo(self):
-        self.__resumo
+        return self.__resumo
 
     @resumo.setter
     def resumo(self, resumo):
@@ -22,7 +22,7 @@ class Conta():
 
     @property
     def valor(self):
-        self.valor
+        return self.__valor
 
     @valor.setter
     def valor(self, valor):
