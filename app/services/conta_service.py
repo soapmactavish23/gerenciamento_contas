@@ -14,3 +14,10 @@ def cadastrar_conta(conta):
     db.session.add(conta_bd)
     db.session.commit()
     return conta_bd
+
+def atualizar_conta(conta, conta_nova):
+    conta.nome = conta_nova.nome
+    conta.resumo = conta_nova.resumo
+    conta.valor = conta_nova.valor
+    db.session.commit()
+    return conta
