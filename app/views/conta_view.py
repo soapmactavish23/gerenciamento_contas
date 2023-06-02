@@ -45,6 +45,13 @@ class ContaDetail(Resource):
             conta_nova = conta.Conta(nome=nome, resumo=resumo, valor=valor)
             resultado = conta_service.atualizar_conta(conta_bd, conta_nova)
             return make_response(cs.jsonify(resultado), 200)
+    def delete(self, id):
+        conta = conta_service.listar_conta_id(id)
+        if conta is None:
+            return make_response(jsonify("Conta não Encontrada"), 404)
+        conta_service.excluir_conta(conta)
+        return make_response(jsonify(""), 204)
+
 
 
 api.add_resource(ContaList, '/contas')

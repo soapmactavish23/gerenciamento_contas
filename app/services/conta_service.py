@@ -21,3 +21,7 @@ def atualizar_conta(conta, conta_nova):
     conta.valor = conta_nova.valor
     db.session.commit()
     return conta
+
+def excluir_conta(conta):
+    db.session.delete(conta)
+    db.session.commit()
