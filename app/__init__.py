@@ -9,11 +9,8 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 db = SQLAlchemy(app)
-
 ma = Marshmallow(app)
-
 mi = Migrate(app, db)
-
 api = Api(app)
 
 from .models import conta_model, operacao_model
