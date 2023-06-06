@@ -25,3 +25,5 @@ class OperacaoList(Resource):
             )
             resultado = operacao_service.cadastrar_operacao(operacao_nova)
             return make_response(os.jsonify(resultado), 201)
+
+api.add_resource(OperacaoList, "/operacoes")

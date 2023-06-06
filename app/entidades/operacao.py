@@ -15,24 +15,24 @@ class Operacao():
 
     @property
     def resumo(self):
-        return self.resumo
+        return self.__resumo
 
     @resumo.setter
-    def nome(self, resumo):
-            self.resumo = resumo
+    def resumo(self, resumo):
+            self.__resumo = resumo
 
     @property
     def custo(self):
-        return self.custo
+        return self.__custo
 
     @custo.setter
-    def nome(self, custo):
-        self.custo = custo
+    def custo(self, custo):
+        self.__custo = custo
 
     @property
     def tipo(self):
-        return self.tipo
+        return self.__tipo
 
     @tipo.setter
-    def nome(self, tipo):
-        self.tipo = tipo
+    def tipo(self, tipo):
+        self.__tipo = tipo

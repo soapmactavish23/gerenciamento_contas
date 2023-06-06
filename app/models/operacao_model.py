@@ -5,7 +5,6 @@ class TipoEnum(enum.Enum):
     entrada = 1
     saida = 2
 
-
 class Operacao(db.Model):
     __tablename__ = 'operacao'
 
@@ -14,4 +13,4 @@ class Operacao(db.Model):
     resumo = db.Column(db.String(100), nullable=False)
     custo = db.Column(db.Float, nullable=False)
     tipo = db.Column(db.Enum(TipoEnum), nullable=False)
-    conta_id = db.Column(db.Integer, db.ForeignKey("conta.id"))
+    #conta_id = db.Column(db.Integer, db.ForeignKey("conta.id"))
