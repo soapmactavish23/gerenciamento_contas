@@ -6,6 +6,10 @@ from ..services import operacao_service
 from app import api
 
 class OperacaoList(Resource):
+    def get(self):
+        operacoes = operacao_service.listar_operacoes()
+        os = operacao_schema.OperacaoSchema(many=True)
+        return make_response(os.jsonify(operacoes), 200)
     def post(self):
         os = operacao_schema.OperacaoSchema()
         validate = os.validate(request.json)
