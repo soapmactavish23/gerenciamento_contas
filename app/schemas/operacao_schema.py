@@ -13,5 +13,6 @@ class OperacaoSchema(ma.SQLAlchemyAutoSchema):
         resumo = fields.String(required=True)
         custo = fields.String(required=True)
         tipo = fields.String(required=True)
+        conta_id = fields.Integer(required=True)
 
 
