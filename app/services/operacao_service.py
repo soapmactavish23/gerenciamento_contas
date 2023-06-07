@@ -19,3 +19,12 @@ def cadastrar_operacao(operacao):
     db.session.add(operacao_bd)
     db.session.commit()
     return operacao_bd
+
+def atualizar_operacao(operacao, operacao_nova):
+    operacao.nome = operacao_nova.nome
+    operacao.resumo = operacao_nova.resumo
+    operacao.custo = operacao_nova.custo
+    operacao.tipo = operacao_nova.tipo
+
+    db.session.commit()
+    return operacao

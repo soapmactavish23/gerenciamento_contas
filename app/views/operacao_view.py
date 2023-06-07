@@ -38,5 +38,29 @@ class OperacaoDetail(Resource):
         os = operacao_schema.OperacaoSchema()
         return make_response(os.jsonify(operacao), 200)
 
+    def put(self, id):
+        operacao_bd = operacao_service.listar_operacao_id(id)
+        if operacao_bd is None:
+            return make_response(jsonify("Operação Não encontrada"), 404)
+        os = operacao_schema.OperacaoSchema()
+        validate = os.validate(request.json)
+
+        if validate:
+            return make_response(jsonify(validate), 400)
+        else:
+            nome = request.json["nome"]
+            resumo = request.json["resumo"]
+            custo = request.json["custo"]
+            tipo = request.json["tipo"]
+            operacao_nova = operacao.Operacao(
+                nome=nome,
+                resumo=resumo,
+                custo=custo,
+                tipo=tipo
+            )
+            resultado = operacao_service.atualizar_operacao(operacao_bd, operacao_nova)
+            return make_response(os.jsonify(resultado), 200)
+
+
 api.add_resource(OperacaoList, "/operacoes")
 api.add_resource(OperacaoDetail, "/operacoes/<int:id>")
