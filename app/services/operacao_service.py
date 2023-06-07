@@ -28,3 +28,7 @@ def atualizar_operacao(operacao, operacao_nova):
 
     db.session.commit()
     return operacao
+
+def exclui_operacao(operacao):
+    db.session.delete(operacao)
+    db.session.commit()

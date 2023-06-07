@@ -61,6 +61,13 @@ class OperacaoDetail(Resource):
             resultado = operacao_service.atualizar_operacao(operacao_bd, operacao_nova)
             return make_response(os.jsonify(resultado), 200)
 
+    def delete(self, id):
+        operacao = operacao_service.listar_operacao_id(id)
+        if operacao is None:
+            return make_response(jsonify("Operação não encontrada"), 404)
+        operacao_service.exclui_operacao(operacao)
+        return make_response(jsonify(""), 204)
+
 
 api.add_resource(OperacaoList, "/operacoes")
 api.add_resource(OperacaoDetail, "/operacoes/<int:id>")
