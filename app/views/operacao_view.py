@@ -30,4 +30,13 @@ class OperacaoList(Resource):
             resultado = operacao_service.cadastrar_operacao(operacao_nova)
             return make_response(os.jsonify(resultado), 201)
 
+class OperacaoDetail(Resource):
+    def get(self, id):
+        operacao = operacao_service.listar_operacao_id(id)
+        if operacao is None:
+            return make_response(jsonify("Operação não encontrada"), 404)
+        os = operacao_schema.OperacaoSchema()
+        return make_response(os.jsonify(operacao), 200)
+
 api.add_resource(OperacaoList, "/operacoes")
+api.add_resource(OperacaoDetail, "/operacoes/<int:id>")
